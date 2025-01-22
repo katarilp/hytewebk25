@@ -1,0 +1,30 @@
+{
+  "name": "hytewebk25",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "type": "module",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katarilp/hytewebk25.git"
+  },
+  "author": "KPT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katarilp/hytewebk25/issues"
+  },
+  "homepage": "https://github.com/katarilp/hytewebk25#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "globals": "^15.14.0",
+    "nodemon": "^3.1.9",
+    "prettier": "3.4.2"
+  }
+}
