@@ -18,8 +18,11 @@ content-type: application/json
 ### get all items
 GET http://localhost:3000/api/items
 
-### post new item
+###get item by id
+GET http://localhost:3000/api/items/2
 
+
+### post new item
 POST http://localhost:3000/api/items
 content-type: application/json
 

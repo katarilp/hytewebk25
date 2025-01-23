@@ -20,6 +20,7 @@ app.get('/api/', (req, res) => {
 // Items resurssin päätepisteet (endpoint)
 app.get('/api/items', getItems);
 app.post('/api/items', addItem);
+app.get('/api/items/:id', getItemById);
 
 // syötteen lukeminen reittiparametreista (route params)
 app.get('/api/sum/:num1/:num2', (req, res) => {
