@@ -8,4 +8,6 @@ const items =
     res.json(items);
   };
 
-  export{getItems}
+  // TODO: add getById, post, put & delete
+
+  export{getItems};
