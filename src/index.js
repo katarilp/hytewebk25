@@ -1,10 +1,8 @@
-// index.js
 import express from 'express';
-import { getItems } from './items';
+import {getItems} from './items.js';
 const hostname = '127.0.0.1';
 const app = express();
 const port = 3000;
-
 
 // Staattinen html-sivusto tarjoillaan palvelimen juuressa
 app.use('/', express.static('public'));
@@ -19,10 +17,9 @@ app.get('/api/', (req, res) => {
   res.send('Welcome to my REST API!');
 });
 
-//Items resurssin päätepisteet (endpoint)
-app.get('/api/items', (req, res) => {
-  res.json{getItems};
-});
+// Items resurssin päätepisteet (endpoint)
+app.get('/api/items', getItems);
+app.post('/api/items', addItem);
 
 // syötteen lukeminen reittiparametreista (route params)
 app.get('/api/sum/:num1/:num2', (req, res) => {
