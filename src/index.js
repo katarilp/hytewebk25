@@ -1,5 +1,5 @@
 import express from 'express';
-import {getItems} from './items.js';
+import {getItems, addItem} from './items.js';
 const hostname = '127.0.0.1';
 const app = express();
 const port = 3000;
