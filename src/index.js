@@ -1,11 +1,13 @@
 import express from 'express';
-import {getItems, addItem, getItemById} from './items.js';
+import {getItems, addItem, getItemById, putItem, deleteItem} from './items.js';
+import {getUser, addUser, getUsers, getUserById, login} from './users.js';
 const hostname = '127.0.0.1';
 const app = express();
 const port = 3000;
 
 // Staattinen html-sivusto tarjoillaan palvelimen juuressa
 app.use('/', express.static('public'));
+app.use('/moro', express.static('public/moro'));
 
 // middleware, joka lukee json data POST-pyyntöjen rungosta (body)
 app.use(express.json());
@@ -21,6 +23,8 @@ app.get('/api/', (req, res) => {
 app.get('/api/items', getItems);
 app.post('/api/items', addItem);
 app.get('/api/items/:id', getItemById);
+app.put('/api/items/:id', putItem);
+app.delete('/api/items/:id', deleteItem);
 
 // syötteen lukeminen reittiparametreista (route params)
 app.get('/api/sum/:num1/:num2', (req, res) => {
@@ -62,8 +66,17 @@ app.post('/api/moro', (req, res) => {
   res.json({reply: 'no Moro ' + req.body.sender});
 });
 
-// TODO: lisää oma reitti ja toiminnallisuus omaa mielikuvitusta käyttäen, niin
-// ensimmäisen viikon harkka ok
+
+// Users resurssin päätepisteet (endpoint)
+app.get('/api/users', getUsers);
+app.post('/api/users', addUser);
+app.get('/api/users/:username/:password', getUser);
+app.delete('/api/users/:id', deleteItem);
+app.get('/api/users/:id', getUserById);
+app.post('/api/users/login', login);
+
+
+
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

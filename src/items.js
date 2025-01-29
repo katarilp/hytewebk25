@@ -10,7 +10,7 @@ const getItems = (req, res) => {
 };
 
 // itemin lisääminen
-const addItem = () => {
+const addItem = (req, res) => {
   console.log('addItem request body', req.body);
   if (req.body.name) {
     const latestID = items[items.length - 1].id
@@ -38,7 +38,31 @@ const getItemById = (req, res) => {
 };
 
 
-// TODO: put & delete endpoints
-// TODO: lisää users.js, ks. materiaali vk2
+// TODO viikko 2: put & delete endpoints (pal. 29.1.2025)
+const putItem = (req, res) => {
+  console.log('putItem', req.params.id);
+  const item = items.find(item => item.id == req.params.id);
+  console.log('item found', item);
+  if (item){
+    item.name = req.body.name;
+    res.json({message: 'Item updated'});
+  } else {
+    res.status(404).json({message: 'Item not found'});
+  }
+};
 
-export{getItems, addItem, getItemById};
+// itemin poisto id:n perusteella
+const deleteItem = (req, res) => {
+  console.log('deleteItem', req.params.id);
+  const index = items.findIndex((item) => item.id == req.params.id);
+  // findIndex returns -1 if item is not found
+  if (index !== -1) {
+    items.splice(index, 1);
+    res.json({message: 'Item deleted.'});
+  } else {
+    res.status(404).json({message: "Item not found"});
+  }
+};
+
+
+export{getItems, addItem, getItemById, putItem, deleteItem};
